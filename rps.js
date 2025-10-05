@@ -13,4 +13,9 @@ function getComputerChoice() {
     }
 }
 
+function getHumanChioce() {
+    return(prompt("Enter a choice of rock, paper, or scissors: "));
+}
+
 console.log(`Computer choice: ${getComputerChoice()}`);
+console.log(`Human choice: ${getHumanChioce()}`);
