@@ -5,9 +5,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
-    <script src="rps.js"></script>
+    <script src="rps.js" defer></script>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box;
+        }
+
+        body {
+            max-width: 500px;
+            margin: 0px auto;
+        }
+
+        #choices {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            gap: 10px;
+            margin: 10px 0px;
+            padding: 0px 100px;
+        }
+
+        button {
+            flex: 1;
+        }
+
+        p {
+            color: whitesmoke;
+            text-align: center;
+            margin: 10px 0px;
+        }
+    </style>
 </head>
 
 <body style="background-color: #282828;"></body>
+
+<div id="choices">
+    <button id="rock">Rock</button>
+    <button id="paper">Paper</button>
+    <button id="scissors">Scissors</button>
+</div>
+<p id="result"></p>
+<p id="score"></p>
 
 </html>

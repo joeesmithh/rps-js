@@ -13,46 +13,48 @@ function getComputerChoice() {
     }
 }
 
-function getHumanChioce() {
-    return (prompt("Enter a choice of rock, paper, or scissors: "));
+let text = document.getElementById('result');
+function setText(string) {
+    text.textContent = string;
 }
 
-function playRound(humanChoice = "", computerChioce = "") {
-    let combined = (humanChoice.toLowerCase() + computerChioce.toLowerCase());
+function playRound(humanChoice = "") {
+    let computerChoice = getComputerChoice();
+    let combined = (humanChoice.toLowerCase() + computerChoice.toLowerCase());
     let result = "stalemate";
     switch (combined) {
         case "rockrock":
-            console.log("Stalemate! You both played Rock.");
+            setText("Stalemate! You both played Rock.");
             break;
         case "rockpaper":
-            console.log("You lose! Paper beats Rock.");
+            setText("You lose! Paper beats Rock.");
             result = "lose";
             break;
         case "rockscissors":
-            console.log("You win! Rock beats Scissors.");
+            setText("You win! Rock beats Scissors.");
             result = "win";
             break;
         case "paperrock":
-            console.log("You win! Paper beats Rock.");
+            setText("You win! Paper beats Rock.");
             result = "win";
             break;
         case "paperpaper":
-            console.log("Stalemate! You both played Paper.");
+            setText("Stalemate! You both played Paper.");
             break;
         case "paperscissors":
-            console.log("You lose! Scissors beats Paper.");
+            setText("You lose! Scissors beats Paper.");
             result = "lose";
             break;
         case "scissorsrock":
-            console.log("You lose! Rock beats Scissors.");
+            setText("You lose! Rock beats Scissors.");
             result = "lose";
             break;
         case "scissorspaper":
-            console.log("You win! Scissors beats Paper.");
+            setText("You win! Scissors beats Paper.");
             result = "win";
             break;
         case "scissorsscissors":
-            console.log("Stalemate! Yout both played Scissors.");
+            setText("Stalemate! Yout both played Scissors.");
             break;
         default:
             break;
@@ -61,25 +63,26 @@ function playRound(humanChoice = "", computerChioce = "") {
     return result;
 }
 
-function playGame() {
-    let humanScore = 0;
-    let computerScore = 0;
+let buttons = document.getElementById('choices');
+let score = document.getElementById('score');
 
-    for (let i = 0; i < 5; i++) {
-        let humanSelection = getHumanChioce();
-        let computerSelection = getComputerChoice();
-        let result = playRound(humanSelection, computerSelection);
-        switch (result) {
-            case "win":
-                humanScore++;
-                break;
-            case "lose":
-                computerScore++;
-                break;
-            default:
-                break;
-        }
+let humanScore = 0;
+let computerScore = 0;
+
+buttons.addEventListener('click', (e) => {
+    let result = playRound(e.target.id);
+    switch (result) {
+        case "win":
+            humanScore++;
+            break;
+        case "lose":
+            computerScore++;
+            break;
+        default:
+            break;
     }
-}
 
-playGame();
+    score.innerText = "Score: " + humanScore;
+});
+
+//playGame();
